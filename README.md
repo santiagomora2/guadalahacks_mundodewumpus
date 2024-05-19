@@ -1,6 +1,13 @@
 # guadalahacks_mundodewumpus
 El programa del equipo El Mundo de Wumpus para el hachathon 2024 de guadalahacks.
 
+Autores: 
+
+Santiago Mora
+Rene Calzadilla
+Guillermo Villegas
+Gabriel Reynoso
+
 ## Requerimientos
 Para correr este programa, es necesario tener instaladas las librerías de python (con pip o conda):
 - streamlit
