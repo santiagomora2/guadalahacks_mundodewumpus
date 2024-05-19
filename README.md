@@ -4,8 +4,11 @@ El programa del equipo El Mundo de Wumpus para el hachathon 2024 de guadalahacks
 Autores: 
 
 Santiago Mora
+
 Rene Calzadilla
+
 Guillermo Villegas
+
 Gabriel Reynoso
 
 ## Requerimientos
