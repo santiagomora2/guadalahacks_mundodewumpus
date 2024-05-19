@@ -30,4 +30,4 @@ Además, se debe instalar ffmpeg y tenerlo en %PATH%
 
 Una vez satisfechos los requerimientos, ubicar la terminal en la dirección en la que se tienen los archivos y correr el comando:
 
-´´´python -m streamlit run app.py´´´
+python -m streamlit run app.py
