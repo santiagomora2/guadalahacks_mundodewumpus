@@ -28,10 +28,10 @@ wav_audio_data = st_audiorec()
 
 if wav_audio_data is not None:
 
-    audio_bytes = wav_audio_data
-    bytes_to_wav(audio_bytes, 'audio.wav')
-
     if st.button('Procesar'):
+
+        audio_bytes = wav_audio_data
+        bytes_to_wav(audio_bytes, 'audio.wav')
 
         datos = to_diagnose('audio.wav')
 
