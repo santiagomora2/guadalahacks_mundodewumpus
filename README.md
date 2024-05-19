@@ -11,6 +11,8 @@ Para correr este programa, es necesario tener instaladas las librerías de pytho
 - numpy
 - librosa
 - scipy
+- wave
+- streamlit-audiorec
 
 Además, se debe instalar ffmpeg y tenerlo en %PATH%
 
