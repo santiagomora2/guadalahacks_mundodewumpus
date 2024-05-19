@@ -6,6 +6,7 @@ import numpy as np
 import librosa as lb
 import math
 from scipy import stats
+import wave
 
 sc_X = StandardScaler()
 
@@ -91,6 +92,16 @@ def std_x(arr):
 
     std_arr = np.array(std_arr)
     return std_arr
+
+import wave
+
+def bytes_to_wav(byte_data, filename):
+    with wave.open(filename, 'wb') as wav_file:
+        wav_file.setnchannels(1)
+        wav_file.setsampwidth(2)
+        wav_file.setframerate(44100)
+        wav_file.writeframes(byte_data)
+
 
 def to_diagnose(file):
     #Read file

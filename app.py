@@ -1,7 +1,11 @@
 from utils import *
 import streamlit as st
+from st_audiorec import st_audiorec
+
 
 #      python -m streamlit run app.py
+
+parkinsonUrl = 'https://www.who.int/es/news-room/fact-sheets/detail/parkinson-disease'
 
 st.set_page_config(
     page_title="Mundo de Wumpus",
@@ -17,26 +21,29 @@ st.write('La enfermedad de Parkinson es un desorden neurodegenerativo progresivo
 st.write('Uno de los sintomas iniciales que presenta en el 90% de los pacientes son problemas vocales. Esto lo hace una característica importante para el telediagnóstico de la enfermedad.')
 
 st.write('**Instrucciones**:')
-st.write('- Grábate diciendo la vocal /a/ durante 5 segundos.')
-st.write('- Después, sube tu archivo (.wav) aquí y una vez subido has click en Procesar.')
+st.write('- Grábate diciendo la vocal /a/ durante ~3 segundos.')
+st.write('- Espera a que tu grabación se guarde y has click en Procesar.')
 
-files_uploaded = st.file_uploader(
-    "Carga tu archivo",
-    accept_multiple_files=False
-    )
+wav_audio_data = st_audiorec()
 
-if st.button('Procesar'):
+if wav_audio_data is not None:
 
-    datos = to_diagnose(files_uploaded)
+    audio_bytes = wav_audio_data
+    bytes_to_wav(audio_bytes, 'audio.wav')
 
-    st.write(datos)
+    if st.button('Procesar'):
 
-    decision = voting(datos)
+        datos = to_diagnose('audio.wav')
 
-    if decision:
-        st.write('Tienes Parkinson')
-    else:
-        st.write('NO Tienes Parkinson :D')
+        #st.write(datos)
+
+        decision = voting(datos)
+
+        if decision:
+            st.write('Oh no! Nuestro agente detectó que es probable que tengas Parkinson. Refiérete a tu doctor para un diagnóstico adecuado.')
+            st.write('Puedes consultar más información sobre el Parkinson y sus tratamientos en [esta página](%s).' % parkinsonUrl)
+        else:
+            st.write('Nuestro agente no detectó Parkinson en tu voz. :grin: :white_check_mark:')
 
 InvestUrl = "https://doi.org/10.1016/j.asoc.2018.10.022"
 KaggleUrl = "https://www.kaggle.com/datasets/dipayanbiswas/parkinsons-disease-speech-signal-features/data"
